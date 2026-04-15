@@ -8,19 +8,19 @@ app = Flask(__name__,template_folder=os.path.join(base_dir,'templates'))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project.db'
 db = SQLAlchemy(app)
 
-# The Model - Using 'Item'  example
+
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True) # Fixed: Capital 'I'
     name = db.Column(db.String(100), nullable=False)
 
-# Using the 'with' statement for context
+
 with app.app_context():
     db.create_all() 
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        #  data you typed in the HTML box
+       
         user_input = request.form.get('content')
         if user_input:
             new_item = Item(name=user_input)
@@ -29,7 +29,7 @@ def home():
         return redirect('/')
     
     
-    # GET : Show all items from the database
+    
     all_data = Item.query.all()
     return render_template('datab1.html', items=all_data)
 

@@ -15,10 +15,10 @@ def home():
         df = pd.DataFrame(data)
         df['Total'] = df['Price'] * df['Quantity']
         
-        # HTML ટેબલ બનાવવું
+        
         table_html = df.to_html(classes='table table-bordered', index=False)
         
-        # એક્સેલ ફાઈલ સેવ કરવી
+    
         df.to_excel('business_data.xlsx', index=False)
         
         return render_template('index.html', table=table_html)

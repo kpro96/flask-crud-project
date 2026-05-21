@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Flask App</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        input { padding: 8px; }
+        button { padding: 8px; background: blue; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Data Entry System</h1>
+    
+    <form method="POST">
+        <input type="text" name="content" placeholder="Type something..." required>
+        <button type="submit">Save to SQL</button>
+    </form>
+
+    <hr>
+
+    <h3>Saved Data in Database:</h3>
+    
+    <ul>
+        
+    
+        {% for item in items %}
+         <li>
+                {{ item.name }}
+            <a href ="/delete/{{item.id}}"style="color:red; margin-left:15px;">
+                [delete]
+            </a>
+            <a href ="/update/{{item.id}}">[edit]
+        
+            </a>
+            </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
